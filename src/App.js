@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/header/Header";
+import classes from "./App.module.css";
+import Main from "./components/main/Main";
+import { useState } from "react";
 
 function App() {
+  const [showMain, setShowMain] = useState(false);
+
+  const showMainHandler = () => {
+    setShowMain(true);
+  };
+
+  const showFirstPageHandler = () => {
+    setShowMain(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className={classes.main}>
+      <Header
+        showMain={showMain}
+        showMainHandler={showMainHandler}
+        showFirstPageHandler={showFirstPageHandler}
+      />
+
+      {showMain && <Main />}
+    </main>
   );
 }
 

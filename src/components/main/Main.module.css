@@ -1,0 +1,109 @@
+.mainSection {
+  width: 100%;
+  height: calc(100vh - 9rem);
+  color: #777;
+  display: flex;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.addToListContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 2rem;
+  width: 30%;
+}
+
+.heading {
+  font-size: 2.2rem;
+}
+
+.productNameInput {
+  display: flex;
+  align-items: center;
+  gap: 1.3rem;
+}
+
+.productNameInput label {
+  font-size: 2.1rem;
+}
+
+.productNameInput input {
+  padding: 0.5rem 0.5rem;
+  font-family: "Architects Daughter", "Roboto", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 1.8rem;
+  border: 2px dashed black;
+  border-radius: 1rem;
+  width: 25rem;
+}
+
+.productNameInput input:active,
+.productNameInput input:focus {
+  outline: 1px solid #ff9d40;
+}
+
+.productNameInput input::placeholder {
+  color: rgba(119, 119, 119, 0.514);
+}
+
+.button {
+  padding: 0.1rem 2rem;
+  background-color: #ffdebf;
+  color: #804916;
+  font-size: 2.3rem;
+  outline: 0.3rem solid #ff9d40;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  font-family: "Architects Daughter", "Supermercado One", "Roboto",
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 3px;
+}
+
+.container {
+  margin: 0 auto;
+  display: flex;
+  width: 100%;
+  gap: 6rem;
+  justify-content: center;
+}
+
+.listContainer {
+  font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.shopList {
+  display: flex;
+  align-items: center;
+  width: 50rem !important;
+  height: 5rem;
+  gap: 1rem;
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+}
+
+.itemNumber {
+  width: 3rem;
+}
+
+.itemName {
+  width: 30ch;
+}
+
+.deleteIcon {
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+}
