@@ -73,7 +73,7 @@ const Header = (props) => {
         </nav>
       </div>
       {!props.showMain && (
-        <div>
+        <div className={classes.homePage}>
           <div className={classes.videoContainer}>
             <video className={classes.video} autoPlay loop muted>
               <source src={video} type="video/mp4" />
