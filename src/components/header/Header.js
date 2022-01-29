@@ -5,7 +5,7 @@ const Header = (props) => {
   return (
     <header>
       <div className={classes.header}>
-        <div className={classes.logo}>
+        <div onClick={() => window.location.reload()} className={classes.logo}>
           <svg
             className={classes.logoimg}
             xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +68,7 @@ const Header = (props) => {
                 Anasayfaya Dön
               </li>
             )}
-            <li className={classes.navButton}>Yakındaki Marketler</li>
+            {/* <li className={classes.navButton}>Yakındaki Marketler</li> */}
           </ul>
         </nav>
       </div>
