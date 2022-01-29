@@ -75,7 +75,15 @@ const Header = (props) => {
       {!props.showMain && (
         <div className={classes.homePage}>
           <div className={classes.videoContainer}>
-            <video className={classes.video} autoPlay loop muted>
+            <video
+              className={classes.video}
+              autoPlay
+              loop
+              muted
+              playInBackground={true}
+              playWhenInactive={true}
+              ignoreSilentSwitch="ignores"
+            >
               <source src={video} type="video/mp4" />
             </video>
           </div>
