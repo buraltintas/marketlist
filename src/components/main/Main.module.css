@@ -46,7 +46,7 @@
 
 .productNameInput input:active,
 .productNameInput input:focus {
-  outline: 0.1rem solid #ff9d40;
+  border: 0.1rem solid #ff9d40;
 }
 
 .productNameInput input::placeholder {
@@ -62,8 +62,8 @@
   background-color: #ffdebf;
   color: #804916;
   font-size: 2.3rem;
-  outline: 0.3rem solid #ff9d40;
-  border: none;
+  border: 0.3rem solid #ff9d40;
+
   border-radius: 1rem;
   cursor: pointer;
   text-decoration: none;

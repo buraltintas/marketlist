@@ -41,13 +41,13 @@
   transition: all 0.3s;
   cursor: pointer;
   padding: 1rem;
-  outline: 1px solid transparent;
+  border: 1px solid transparent;
   border-radius: 1rem;
 }
 
 .navButton:hover {
   color: #ffe9d5;
-  outline: 1px solid white;
+  border: 1px solid white;
   border-radius: 2rem;
 }
 
@@ -118,8 +118,8 @@
   background-color: #ffdebf;
   color: #804916;
   font-size: 3rem;
-  outline: 0.3rem solid #ff9d40;
-  border: none;
+  border: 0.3rem solid #ff9d40;
+
   border-radius: 1rem;
   cursor: pointer;
   text-decoration: none;
