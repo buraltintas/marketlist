@@ -146,7 +146,7 @@
 .container {
   margin: 0 auto;
   display: flex;
-
+  flex-direction: column;
   width: 100%;
   gap: 6rem;
 }

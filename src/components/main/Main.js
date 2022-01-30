@@ -241,100 +241,88 @@ const Main = () => {
           </div>
         )}
 
-        <div className={classes.listContainer}>
-          {showTarget && priceList && (
-            <h1 className={classes.heading}>
-              Listendekileri alırken fiyatını yaz
-            </h1>
-          )}
-          {showTarget && target && (
-            <div className={classes.targetText}>
+        {marketList && (
+          <div className={classes.listContainer}>
+            {showTarget && priceList && (
               <h1 className={classes.heading}>
-                Belirlediğin tahmini toplam tutar:
+                Listendekileri alırken fiyatını yaz
               </h1>
-              <p>₺{(+target).toLocaleString("tr-TR")}</p>
-              {!editIcon && (
-                <div
-                  className={classes.deleteIcon}
-                  onClick={() => setEditIcon(true)}
-                >
-                  <img
-                    src={editIconImg}
-                    alt="edit icon"
+            )}
+            {showTarget && target && (
+              <div className={classes.targetText}>
+                <h1 className={classes.heading}>
+                  Belirlediğin tahmini toplam tutar:
+                </h1>
+                <p>₺{(+target).toLocaleString("tr-TR")}</p>
+                {!editIcon && (
+                  <div
                     className={classes.deleteIcon}
-                  />
-                </div>
-              )}
-              {editIcon && (
-                <form
-                  onSubmit={submitTargetHandler}
-                  className={classes.productNameInput}
-                >
-                  <label htmlFor="target">₺</label>
-                  <input
-                    onChange={targetInputHandler}
-                    className={classes.targetInput}
-                    placeholder="ör: 500"
-                    thousandSeparator={true}
-                    thousandsGroupStyle="try"
-                    prefix={"₺"}
-                    value={(+targetInput).toLocaleString("tr-TR")}
-                    required
-                  />
-                  <button className={classes.button}>
-                    <div className={classes.targetIcon}>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="192"
-                        height="192"
-                        fill="#804916"
-                        viewBox="0 0 256 256"
-                      >
-                        <rect width="256" height="256" fill="none"></rect>
-                        <polyline
-                          points="216 72 104 184 48 128"
-                          fill="none"
-                          stroke="#804916"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="16"
-                        ></polyline>
-                      </svg>
-                    </div>
-                  </button>
-                </form>
-              )}
-            </div>
-          )}
-
-          {!showTarget && !priceList && marketList.length > 0 && (
-            <h1 className={classes.heading}>Alışveriş listesi</h1>
-          )}
-          <div className={classes.listandinput}>
-            {marketList &&
-              marketList.map((item, index) => {
-                return (
-                  <div key={index}>
-                    <div className={classes.shopList}>
-                      <p className={classes.itemNumber}>{index + 1}-</p>
-                      <div className={classes.itemNameDiv}>
-                        <p className={classes.itemName}>{item.name}</p>
-                      </div>
-
-                      {!priceList && !showTarget && (
-                        <div
-                          className={classes.deleteIcon}
-                          onClick={() => deleteItem(item.name)}
+                    onClick={() => setEditIcon(true)}
+                  >
+                    <img
+                      src={editIconImg}
+                      alt="edit icon"
+                      className={classes.deleteIcon}
+                    />
+                  </div>
+                )}
+                {editIcon && (
+                  <form
+                    onSubmit={submitTargetHandler}
+                    className={classes.productNameInput}
+                  >
+                    <label htmlFor="target">₺</label>
+                    <input
+                      onChange={targetInputHandler}
+                      className={classes.targetInput}
+                      placeholder="ör: 500"
+                      thousandSeparator={true}
+                      thousandsGroupStyle="try"
+                      prefix={"₺"}
+                      value={(+targetInput).toLocaleString("tr-TR")}
+                      required
+                    />
+                    <button className={classes.button}>
+                      <div className={classes.targetIcon}>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="192"
+                          height="192"
+                          fill="#804916"
+                          viewBox="0 0 256 256"
                         >
-                          <img
-                            src={deleteIcon}
-                            alt="delete icon"
-                            className={classes.deleteIcon}
-                          />
+                          <rect width="256" height="256" fill="none"></rect>
+                          <polyline
+                            points="216 72 104 184 48 128"
+                            fill="none"
+                            stroke="#804916"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="16"
+                          ></polyline>
+                        </svg>
+                      </div>
+                    </button>
+                  </form>
+                )}
+              </div>
+            )}
+
+            {!showTarget && !priceList && marketList.length > 0 && (
+              <h1 className={classes.heading}>Alışveriş listesi</h1>
+            )}
+            <div className={classes.listandinput}>
+              {marketList &&
+                marketList.map((item, index) => {
+                  return (
+                    <div key={index}>
+                      <div className={classes.shopList}>
+                        <p className={classes.itemNumber}>{index + 1}-</p>
+                        <div className={classes.itemNameDiv}>
+                          <p className={classes.itemName}>{item.name}</p>
                         </div>
-                      )}
-                      <div className={classes.deleteAndPrice}>
-                        {marketList.length > 1 && priceList && showTarget && (
+
+                        {!priceList && !showTarget && (
                           <div
                             className={classes.deleteIcon}
                             onClick={() => deleteItem(item.name)}
@@ -346,88 +334,105 @@ const Main = () => {
                             />
                           </div>
                         )}
+                        <div className={classes.deleteAndPrice}>
+                          {marketList.length > 1 && priceList && showTarget && (
+                            <div
+                              className={classes.deleteIcon}
+                              onClick={() => deleteItem(item.name)}
+                            >
+                              <img
+                                src={deleteIcon}
+                                alt="delete icon"
+                                className={classes.deleteIcon}
+                              />
+                            </div>
+                          )}
 
-                        {showTarget && priceList && (
-                          <div className={classes.productNameInput}>
-                            <input
-                              type="number"
-                              className={classes.targetInput}
-                              placeholder="ör: 50"
-                              required
-                              onBlur={(e) => {
-                                const copyMarketList = [...marketList];
-                                copyMarketList.map((el, ind) => {
-                                  if (index === ind) {
-                                    el.price = e.target.value;
-                                  }
-                                });
-                                setMarketList(copyMarketList);
-                              }}
-                            />
-                            {item.price !== "" ? (
-                              <p
-                                className={classes.enteredPrice}
-                              >{`₺${(+item.price).toLocaleString("tr-TR")}`}</p>
-                            ) : (
-                              <p className={classes.noPrice}>
-                                Fiyat girilmemiş
-                              </p>
-                            )}
-                          </div>
-                        )}
+                          {showTarget && priceList && (
+                            <div className={classes.productNameInput}>
+                              <input
+                                type="number"
+                                className={classes.targetInput}
+                                placeholder="ör: 50"
+                                required
+                                onBlur={(e) => {
+                                  const copyMarketList = [...marketList];
+                                  copyMarketList.map((el, ind) => {
+                                    if (index === ind) {
+                                      el.price = e.target.value;
+                                    }
+                                  });
+                                  setMarketList(copyMarketList);
+                                }}
+                              />
+                              {item.price !== "" ? (
+                                <p
+                                  className={classes.enteredPrice}
+                                >{`₺${(+item.price).toLocaleString(
+                                  "tr-TR"
+                                )}`}</p>
+                              ) : (
+                                <p className={classes.noPrice}>
+                                  Fiyat girilmemiş
+                                </p>
+                              )}
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              {showTarget && priceList && (
+                <div className={classes.listInput}>
+                  <form
+                    onSubmit={submitHandler}
+                    className={classes.productNameInput}
+                  >
+                    <label htmlFor="name">ürün adı</label>
+                    <input
+                      className={classes.listInput}
+                      type="text"
+                      id="name"
+                      placeholder="ör: çamaşır deterjanı"
+                      onChange={listItemHandler}
+                      value={listItem}
+                      required
+                    />
+                    <button className={classes.button}>ekle</button>
+                  </form>
+                </div>
+              )}
+            </div>
             {showTarget && priceList && (
-              <div className={classes.listInput}>
-                <form
-                  onSubmit={submitHandler}
-                  className={classes.productNameInput}
-                >
-                  <label htmlFor="name">ürün adı</label>
-                  <input
-                    className={classes.listInput}
-                    type="text"
-                    id="name"
-                    placeholder="ör: çamaşır deterjanı"
-                    onChange={listItemHandler}
-                    value={listItem}
-                    required
-                  />
-                  <button className={classes.button}>ekle</button>
-                </form>
-              </div>
+              <h1 className={classes.heading}>
+                Toplam tutar: ₺{sum.toLocaleString("tr-TR")}
+                <br />
+                {target && (
+                  <h1 className={classes.heading}>
+                    Tahmininden ₺
+                    {Math.abs(sum - +target).toLocaleString("tr-TR")} daha{" "}
+                    {sum > +target ? "fazla" : "az"} harcadın!
+                  </h1>
+                )}
+                <div className={classes.btnContainer}>
+                  <button
+                    onClick={finishHandler}
+                    className={`${classes.button} ${classes.finishButton}`}
+                  >
+                    alışveriş tamam, silebiliriz!
+                  </button>
+                  <button
+                    onClick={goBackHandler}
+                    className={`${classes.button} ${classes.backButton}`}
+                  >
+                    geri git
+                  </button>
+                </div>
+              </h1>
             )}
           </div>
-          {showTarget && priceList && (
-            <h1 className={classes.heading}>
-              Toplam tutar: ₺{sum.toLocaleString("tr-TR")}
-              <br />
-              {target && (
-                <h1 className={classes.heading}>
-                  Tahmininden ₺{Math.abs(sum - +target).toLocaleString("tr-TR")}{" "}
-                  daha {sum > +target ? "fazla" : "az"} harcadın!
-                </h1>
-              )}
-              <div className={classes.btnContainer}>
-                <button
-                  onClick={finishHandler}
-                  className={`${classes.button} ${classes.finishButton}`}
-                >
-                  alışveriş tamam, silebiliriz!
-                </button>
-                <button
-                  onClick={goBackHandler}
-                  className={`${classes.button} ${classes.backButton}`}
-                >
-                  geri git
-                </button>
-              </div>
-            </h1>
-          )}
-        </div>
+        )}
       </div>
       {/* <Footer /> */}
     </section>
