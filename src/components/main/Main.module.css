@@ -12,7 +12,7 @@
 
 .addToListContainer {
   margin: 0 auto !important;
-  max-width: 100% !important;
+  width: 90% !important;
   display: flex;
 
   flex-direction: column;
@@ -31,7 +31,7 @@
 }
 
 .productNameInput {
-  max-width: 100% !important;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,7 +49,6 @@
   font-size: 1.8rem;
   border: 0.2rem dashed black;
   border-radius: 1rem;
-  width: 30rem !important;
 }
 
 .productNameInput input:active,
@@ -155,7 +154,7 @@
 
 .listContainer {
   margin: 0 auto;
-  width: 100%;
+  width: 95%;
   font-size: 1.8rem;
   display: flex;
   flex-direction: column;
@@ -171,8 +170,13 @@
   letter-spacing: 0.2rem;
 }
 
-.listInput {
+.listandinput {
   width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.listInput {
   margin: 0 auto;
 }
 
@@ -226,7 +230,6 @@
   }
 
   .addToListContainer {
-    max-width: 70% !important;
     margin: 0 auto;
   }
 

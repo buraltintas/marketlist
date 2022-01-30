@@ -309,89 +309,90 @@ const Main = () => {
           {!showTarget && !priceList && marketList.length > 0 && (
             <h1 className={classes.heading}>Alışveriş listesi</h1>
           )}
+          <div>
+            {marketList &&
+              marketList.map((item, index) => {
+                return (
+                  <div key={index}>
+                    <div className={classes.shopList}>
+                      <p className={classes.itemNumber}>{index + 1}-</p>
+                      <div>
+                        <p className={classes.itemName}>{item.name}</p>
+                      </div>
 
-          {marketList &&
-            marketList.map((item, index) => {
-              return (
-                <div key={index}>
-                  <div className={classes.shopList}>
-                    <p className={classes.itemNumber}>{index + 1}-</p>
-                    <div>
-                      <p className={classes.itemName}>{item.name}</p>
+                      {marketList.length > 1 && priceList && showTarget && (
+                        <div
+                          className={classes.deleteIcon}
+                          onClick={() => deleteItem(item.name)}
+                        >
+                          <img
+                            src={deleteIcon}
+                            alt="delete icon"
+                            className={classes.deleteIcon}
+                          />
+                        </div>
+                      )}
+
+                      {!priceList && !showTarget && (
+                        <div
+                          className={classes.deleteIcon}
+                          onClick={() => deleteItem(item.name)}
+                        >
+                          <img
+                            src={deleteIcon}
+                            alt="delete icon"
+                            className={classes.deleteIcon}
+                          />
+                        </div>
+                      )}
+
+                      {showTarget && priceList && (
+                        <div className={classes.productNameInput}>
+                          <input
+                            type="number"
+                            className={classes.targetInput}
+                            placeholder="ör: 50"
+                            required
+                            onBlur={(e) => {
+                              const copyMarketList = [...marketList];
+                              copyMarketList.map((el, ind) => {
+                                if (index === ind) {
+                                  el.price = e.target.value;
+                                }
+                              });
+                              setMarketList(copyMarketList);
+                            }}
+                          />
+                          {item.price !== "" && (
+                            <p>{`₺${item.price.toLocaleString("tr-TR")}`}</p>
+                          )}
+                        </div>
+                      )}
                     </div>
-
-                    {marketList.length > 1 && priceList && showTarget && (
-                      <div
-                        className={classes.deleteIcon}
-                        onClick={() => deleteItem(item.name)}
-                      >
-                        <img
-                          src={deleteIcon}
-                          alt="delete icon"
-                          className={classes.deleteIcon}
-                        />
-                      </div>
-                    )}
-
-                    {!priceList && !showTarget && (
-                      <div
-                        className={classes.deleteIcon}
-                        onClick={() => deleteItem(item.name)}
-                      >
-                        <img
-                          src={deleteIcon}
-                          alt="delete icon"
-                          className={classes.deleteIcon}
-                        />
-                      </div>
-                    )}
-
-                    {showTarget && priceList && (
-                      <div className={classes.productNameInput}>
-                        <input
-                          type="number"
-                          className={classes.targetInput}
-                          placeholder="ör: 50"
-                          required
-                          onBlur={(e) => {
-                            const copyMarketList = [...marketList];
-                            copyMarketList.map((el, ind) => {
-                              if (index === ind) {
-                                el.price = e.target.value;
-                              }
-                            });
-                            setMarketList(copyMarketList);
-                          }}
-                        />
-                        {item.price !== "" && (
-                          <p>{`₺${item.price.toLocaleString("tr-TR")}`}</p>
-                        )}
-                      </div>
-                    )}
                   </div>
-                </div>
-              );
-            })}
-          {showTarget && priceList && (
-            <div className={classes.listInput}>
-              <form
-                onSubmit={submitHandler}
-                className={classes.productNameInput}
-              >
-                <label htmlFor="name">ürün adı</label>
-                <input
-                  className={classes.listInput}
-                  type="text"
-                  id="name"
-                  placeholder="ör: çamaşır deterjanı"
-                  onChange={listItemHandler}
-                  value={listItem}
-                  required
-                />
-                <button className={classes.button}>ekle</button>
-              </form>
-            </div>
-          )}
+                );
+              })}
+            {showTarget && priceList && (
+              <div className={classes.listInput}>
+                <form
+                  onSubmit={submitHandler}
+                  className={classes.productNameInput}
+                >
+                  <label htmlFor="name">ürün adı</label>
+                  <input
+                    className={classes.listInput}
+                    type="text"
+                    id="name"
+                    placeholder="ör: çamaşır deterjanı"
+                    onChange={listItemHandler}
+                    value={listItem}
+                    required
+                  />
+                  <button className={classes.button}>ekle</button>
+                </form>
+              </div>
+            )}
+          </div>
           {showTarget && priceList && (
             <h1 className={classes.heading}>
               Toplam tutar: ₺{sum.toLocaleString("tr-TR")}
