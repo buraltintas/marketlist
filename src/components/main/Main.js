@@ -408,7 +408,7 @@ const Main = () => {
                   onClick={finishHandler}
                   className={`${classes.button} ${classes.finishButton}`}
                 >
-                  alışverişimi tamamladım, silebiliriz!
+                  alışveriş tamam, silebiliriz!
                 </button>
                 <button
                   onClick={goBackHandler}
