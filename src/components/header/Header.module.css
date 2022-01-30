@@ -25,6 +25,7 @@
   padding-left: 6rem;
   cursor: pointer;
   letter-spacing: 4px;
+  transform: translateX(-10%);
 }
 
 .logoimg {
