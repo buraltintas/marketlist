@@ -3,6 +3,7 @@ import classes from "./Main.module.css";
 import NumberFormat from "react-number-format";
 import editIconImg from "./pencil.svg";
 import deleteIcon from "./trash.png";
+import Footer from "../footer/Footer";
 
 const Main = () => {
   const [listItem, setListItem] = useState("");
@@ -428,6 +429,7 @@ const Main = () => {
           )}
         </div>
       </div>
+      {/* <Footer /> */}
     </section>
   );
 };

@@ -2,6 +2,7 @@ import Header from "./components/header/Header";
 import classes from "./App.module.css";
 import Main from "./components/main/Main";
 import { useState } from "react";
+import Footer from "../src/components/footer/Footer";
 
 function App() {
   const [showMain, setShowMain] = useState(false);
@@ -23,6 +24,7 @@ function App() {
       />
 
       {showMain && <Main />}
+      <Footer />
     </main>
   );
 }

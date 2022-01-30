@@ -1,0 +1,24 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Readex Pro, sans-serif;
+  margin-top: 12%;
+  margin-bottom: 5rem;
+  color: #343a40;
+  font-size: 1.1rem;
+}
+
+.copyright {
+  line-height: 1.6;
+  color: #343a40;
+  margin-top: 0.2rem;
+  text-align: center;
+  font-weight: 400;
+}
+
+.logo {
+  width: 24px;
+  height: 24px;
+}

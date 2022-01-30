@@ -1,0 +1,10 @@
+.social-icon {
+  height: 2.4rem;
+  width: 2.4rem;
+  color: #767676;
+  margin-right: 1rem;
+}
+
+.social-icon:hover {
+  color: #494949;
+}
