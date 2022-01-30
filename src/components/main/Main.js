@@ -49,6 +49,7 @@ const Main = () => {
     setPriceList(true);
     setShowTarget(true);
     setEditIcon(false);
+    setTarget("");
   };
 
   const deleteItem = (e) => {
@@ -68,7 +69,14 @@ const Main = () => {
     localStorage.removeItem("marketList");
     setMarketList([]);
     setTargetInput("");
-    setPredict(false);
+  };
+
+  const goBackHandler = () => {
+    setPriceList(false);
+    setShowTarget(false);
+    setPredict("");
+    setEditIcon(false);
+    setTarget("");
   };
 
   useEffect(() => {
@@ -168,8 +176,8 @@ const Main = () => {
                 onSubmit={submitTargetHandler}
                 className={classes.productNameInput}
               >
-                <label htmlFor="target">₺</label>
-                <NumberFormat
+                {!showTarget && !priceList && <label htmlFor="target">₺</label>}
+                <input
                   onChange={targetInputHandler}
                   className={classes.targetInput}
                   placeholder="ör: 500"
@@ -242,7 +250,7 @@ const Main = () => {
               <h1 className={classes.heading}>
                 Belirlediğin tahmini toplam tutar:
               </h1>
-              <p>{target}</p>
+              <p>₺{(+target).toLocaleString("tr-TR")}</p>
               {!editIcon && (
                 <div
                   className={classes.deleteIcon}
@@ -268,7 +276,7 @@ const Main = () => {
                     thousandSeparator={true}
                     thousandsGroupStyle="try"
                     prefix={"₺"}
-                    value={targetInput}
+                    value={(+targetInput).toLocaleString("tr-TR")}
                     required
                   />
                   <button className={classes.button}>
@@ -354,6 +362,9 @@ const Main = () => {
                             setMarketList(copyMarketList);
                           }}
                         />
+                        {item.price !== "" && (
+                          <p>{`₺${item.price.toLocaleString("tr-TR")}`}</p>
+                        )}
                       </div>
                     )}
                   </div>
@@ -361,22 +372,49 @@ const Main = () => {
               );
             })}
           {showTarget && priceList && (
+            <div className={classes.listInput}>
+              <form
+                onSubmit={submitHandler}
+                className={classes.productNameInput}
+              >
+                <label htmlFor="name">ürün adı</label>
+                <input
+                  className={classes.listInput}
+                  type="text"
+                  id="name"
+                  placeholder="ör: çamaşır deterjanı"
+                  onChange={listItemHandler}
+                  value={listItem}
+                  required
+                />
+                <button className={classes.button}>ekle</button>
+              </form>
+            </div>
+          )}
+          {showTarget && priceList && (
             <h1 className={classes.heading}>
               Toplam tutar: ₺{sum.toLocaleString("tr-TR")}
               <br />
               {target && (
                 <h1 className={classes.heading}>
-                  Tahmininden ₺
-                  {Math.abs(sum - +target.substring(1)).toLocaleString("tr-TR")}{" "}
-                  daha {sum > +target.substring(1) ? "fazla" : "az"} harcadın!
+                  Tahmininden ₺{Math.abs(sum - +target).toLocaleString("tr-TR")}{" "}
+                  daha {sum > +target ? "fazla" : "az"} harcadın!
                 </h1>
               )}
-              <button
-                onClick={finishHandler}
-                className={`${classes.button} ${classes.finishButton}`}
-              >
-                Alışverişimi tamamladım, silebiliriz!
-              </button>
+              <div className={classes.btnContainer}>
+                <button
+                  onClick={finishHandler}
+                  className={`${classes.button} ${classes.finishButton}`}
+                >
+                  alışverişimi tamamladım, silebiliriz!
+                </button>
+                <button
+                  onClick={goBackHandler}
+                  className={`${classes.button} ${classes.backButton}`}
+                >
+                  geri git
+                </button>
+              </div>
             </h1>
           )}
         </div>

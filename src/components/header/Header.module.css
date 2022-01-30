@@ -294,6 +294,17 @@
   html {
     font-size: 40%;
   }
+
+  .heading {
+    padding: 1rem;
+    width: 60%;
+    font-size: 1.6rem;
+  }
+
+  .mainimg {
+    width: 12rem;
+    height: 12rem;
+  }
 }
 
 @media (max-width: 27em) {
