@@ -5,7 +5,7 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   height: 6rem;
   max-width: 100%;
   background: #ff9d40;

@@ -309,7 +309,7 @@ const Main = () => {
           {!showTarget && !priceList && marketList.length > 0 && (
             <h1 className={classes.heading}>Alışveriş listesi</h1>
           )}
-          <div>
+          <div className={classes.listandinput}>
             {marketList &&
               marketList.map((item, index) => {
                 return (

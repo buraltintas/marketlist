@@ -3,9 +3,9 @@ import video from "./video.mp4";
 
 const Header = (props) => {
   return (
-    <header>
+    <header className={classes.headerSection}>
       <div className={classes.header}>
-        <div onClick={() => window.location.reload()} className={classes.logo}>
+        <div onClick={props.showFirstPageHandler} className={classes.logo}>
           <svg
             className={classes.logoimg}
             xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +54,7 @@ const Header = (props) => {
           </svg>
           <h1>MarketList</h1>
         </div>
-        <nav className={classes.nav}>
+        {/* <nav className={classes.nav}>
           <ul className={classes.navButtons}>
             {!props.showMain ? (
               <li onClick={props.showMainHandler} className={classes.navButton}>
@@ -68,9 +68,9 @@ const Header = (props) => {
                 Anasayfaya Dön
               </li>
             )}
-            {/* <li className={classes.navButton}>Yakındaki Marketler</li> */}
+            <li className={classes.navButton}>Yakındaki Marketler</li>
           </ul>
-        </nav>
+        </nav> */}
       </div>
       {!props.showMain && (
         <div className={classes.homePage}>

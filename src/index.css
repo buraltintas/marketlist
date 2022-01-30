@@ -60,3 +60,9 @@ body {
     font-size: 15%;
   }
 }
+
+@media (max-width: 15em) {
+  html {
+    font-size: 5%;
+  }
+}
