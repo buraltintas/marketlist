@@ -178,6 +178,7 @@ const Main = () => {
               >
                 {!showTarget && !priceList && <label htmlFor="target">₺</label>}
                 <input
+                  type="number"
                   onChange={targetInputHandler}
                   className={classes.targetInput}
                   placeholder="ör: 500"
@@ -380,7 +381,7 @@ const Main = () => {
                 <label htmlFor="name">ürün adı</label>
                 <input
                   className={classes.listInput}
-                  type="number"
+                  type="text"
                   id="name"
                   placeholder="ör: çamaşır deterjanı"
                   onChange={listItemHandler}
