@@ -380,7 +380,7 @@ const Main = () => {
                 <label htmlFor="name">ürün adı</label>
                 <input
                   className={classes.listInput}
-                  type="text"
+                  type="number"
                   id="name"
                   placeholder="ör: çamaşır deterjanı"
                   onChange={listItemHandler}

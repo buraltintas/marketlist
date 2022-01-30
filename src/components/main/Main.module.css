@@ -143,7 +143,6 @@
 }
 
 .listContainer {
-  max-width: 100%;
   font-size: 1.8rem;
   display: flex;
   flex-direction: column;
