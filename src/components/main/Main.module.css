@@ -107,7 +107,7 @@
   font-size: 1.8rem;
   border: 0.2rem dashed black;
   border-radius: 1rem;
-  width: 8rem;
+  width: 6rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -162,14 +162,26 @@
 
 .shopList {
   margin: 0 auto;
+  margin-bottom: 1rem;
   max-width: 80%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 5rem;
+  justify-content: space-between;
   gap: 1rem;
   font-size: 2.2rem;
   letter-spacing: 0.2rem;
+}
+
+.deleteAndPrice {
+  gap: 1rem;
+  width: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.enteredPrice {
+  width: 10rem;
 }
 
 .listandinput {
@@ -191,8 +203,7 @@
 }
 
 .itemName {
-  min-width: 30rem;
-  max-width: 100%;
+  min-width: 20rem;
   font-family: "Quicksand", sans-serif;
 }
 
@@ -224,6 +235,11 @@
 
   margin-top: 1rem;
   margin-bottom: 2rem;
+}
+
+.noPrice {
+  font-size: 0.8rem;
+  width: 10rem;
 }
 
 @media (max-width: 54em) {

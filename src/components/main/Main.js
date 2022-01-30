@@ -316,22 +316,9 @@ const Main = () => {
                   <div key={index}>
                     <div className={classes.shopList}>
                       <p className={classes.itemNumber}>{index + 1}-</p>
-                      <div>
+                      <div className={classes.itemNameDiv}>
                         <p className={classes.itemName}>{item.name}</p>
                       </div>
-
-                      {marketList.length > 1 && priceList && showTarget && (
-                        <div
-                          className={classes.deleteIcon}
-                          onClick={() => deleteItem(item.name)}
-                        >
-                          <img
-                            src={deleteIcon}
-                            alt="delete icon"
-                            className={classes.deleteIcon}
-                          />
-                        </div>
-                      )}
 
                       {!priceList && !showTarget && (
                         <div
@@ -345,29 +332,49 @@ const Main = () => {
                           />
                         </div>
                       )}
+                      <div className={classes.deleteAndPrice}>
+                        {marketList.length > 1 && priceList && showTarget && (
+                          <div
+                            className={classes.deleteIcon}
+                            onClick={() => deleteItem(item.name)}
+                          >
+                            <img
+                              src={deleteIcon}
+                              alt="delete icon"
+                              className={classes.deleteIcon}
+                            />
+                          </div>
+                        )}
 
-                      {showTarget && priceList && (
-                        <div className={classes.productNameInput}>
-                          <input
-                            type="number"
-                            className={classes.targetInput}
-                            placeholder="ör: 50"
-                            required
-                            onBlur={(e) => {
-                              const copyMarketList = [...marketList];
-                              copyMarketList.map((el, ind) => {
-                                if (index === ind) {
-                                  el.price = e.target.value;
-                                }
-                              });
-                              setMarketList(copyMarketList);
-                            }}
-                          />
-                          {item.price !== "" && (
-                            <p>{`₺${item.price.toLocaleString("tr-TR")}`}</p>
-                          )}
-                        </div>
-                      )}
+                        {showTarget && priceList && (
+                          <div className={classes.productNameInput}>
+                            <input
+                              type="number"
+                              className={classes.targetInput}
+                              placeholder="ör: 50"
+                              required
+                              onBlur={(e) => {
+                                const copyMarketList = [...marketList];
+                                copyMarketList.map((el, ind) => {
+                                  if (index === ind) {
+                                    el.price = e.target.value;
+                                  }
+                                });
+                                setMarketList(copyMarketList);
+                              }}
+                            />
+                            {item.price !== "" ? (
+                              <p
+                                className={classes.enteredPrice}
+                              >{`₺${(+item.price).toLocaleString("tr-TR")}`}</p>
+                            ) : (
+                              <p className={classes.noPrice}>
+                                Fiyat girilmemiş
+                              </p>
+                            )}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 );
