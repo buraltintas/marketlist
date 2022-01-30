@@ -83,6 +83,7 @@ const Header = (props) => {
               playInBackground={true}
               playWhenInactive={true}
               ignoreSilentSwitch="ignores"
+              playsInline
             >
               <source src={video} type="video/mp4" />
             </video>

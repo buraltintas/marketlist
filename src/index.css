@@ -19,8 +19,44 @@ body {
   );
 }
 
-@media (max-width: 38em) {
+/* @media (max-width: 38em) {
   html {
     font-size: 40%;
+  }
+} */
+
+@media (max-width: 63em) {
+  html {
+    font-size: 30%;
+  }
+}
+
+@media (max-width: 40em) {
+  html {
+    font-size: 30%;
+  }
+}
+
+@media (max-width: 38em) {
+  html {
+    font-size: 30%;
+  }
+}
+
+@media (max-width: 33em) {
+  html {
+    font-size: 30%;
+  }
+}
+
+@media (max-width: 32em) {
+  html {
+    font-size: 20%;
+  }
+}
+
+@media (max-width: 27em) {
+  html {
+    font-size: 15%;
   }
 }
