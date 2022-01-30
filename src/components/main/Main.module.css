@@ -1,5 +1,5 @@
 .mainSection {
-  width: 100%;
+  max-width: 100%;
   height: calc(100vh - 9rem);
   overflow-y: scroll;
   color: #777;
@@ -10,6 +10,7 @@
 }
 
 .addToListContainer {
+  width: 100% !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,20 +20,23 @@
 }
 
 .heading {
-  font-size: 2.2rem;
+  font-size: 2rem;
   border-bottom: 0.2rem solid #ff9d40;
   padding-bottom: 0.2rem;
   text-align: center;
+  height: auto;
 }
 
 .productNameInput {
+  width: 100% !important;
   display: flex;
   align-items: center;
   gap: 1.3rem;
 }
 
 .productNameInput label {
-  font-size: 2.1rem;
+  font-size: 2rem;
+  text-align: center;
 }
 
 .listInput {
@@ -143,9 +147,12 @@
 }
 
 .listContainer {
+  margin: 0 auto;
+  width: 100%;
   font-size: 1.8rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .shopList {
