@@ -74,7 +74,7 @@ const Main = () => {
   const goBackHandler = () => {
     setPriceList(false);
     setShowTarget(false);
-    setPredict("");
+
     setEditIcon(false);
     setTarget("");
   };
