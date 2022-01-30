@@ -226,12 +226,12 @@
   }
 
   .addToListContainer {
-    max-width: 100% !important;
+    max-width: 70% !important;
     margin: 0 auto;
   }
 
   .listContainer {
     margin: 0 auto;
-    max-width: 100% !important;
+    max-width: 70% !important;
   }
 }
