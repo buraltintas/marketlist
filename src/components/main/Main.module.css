@@ -4,14 +4,17 @@
   overflow-y: scroll;
   color: #777;
   display: flex;
+
   margin-top: 2rem;
 
   justify-content: center;
 }
 
 .addToListContainer {
-  width: 100% !important;
+  margin: 0 auto !important;
+  max-width: 100% !important;
   display: flex;
+
   flex-direction: column;
   align-items: center;
 
@@ -46,7 +49,7 @@
   font-size: 1.8rem;
   border: 0.2rem dashed black;
   border-radius: 1rem;
-  width: 25rem;
+  width: 40rem !important;
 }
 
 .productNameInput input:active,
@@ -145,9 +148,9 @@
 .container {
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
   width: 100%;
   gap: 6rem;
-  justify-content: center;
 }
 
 .listContainer {
