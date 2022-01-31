@@ -123,6 +123,8 @@ const Main = () => {
     setPriceList(false);
     setShowTarget(false);
     setEditIcon(false);
+    setError(false);
+    setListItem("");
   };
 
   return (
