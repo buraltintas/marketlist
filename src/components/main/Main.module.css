@@ -51,6 +51,13 @@
   border-radius: 1rem;
 }
 
+.errorText {
+  font-size: 2rem;
+  color: red;
+  font-weight: 600;
+  margin-top: -1rem;
+}
+
 .productNameInput input:active,
 .productNameInput input:focus {
   border: 0.1rem solid #ff9d40;

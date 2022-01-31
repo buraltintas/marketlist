@@ -14,6 +14,7 @@ const Main = () => {
   const [editIcon, setEditIcon] = useState(false);
   const [predict, setPredict] = useState("");
   const [marketList, setMarketList] = useState([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("marketList")) {
@@ -58,18 +59,44 @@ const Main = () => {
     setMarketList(newList);
   };
 
+  useEffect(() => {
+    localStorage.setItem("marketList", JSON.stringify(marketList));
+  }, [marketList]);
+
   const submitHandler = (e) => {
     e.preventDefault();
 
-    setMarketList((prev) => [...prev, { name: listItem, price: "" }]);
+    console.log(!marketList.some((item) => item.name.includes(listItem)));
+
+    // if (marketList.length === 0) {
+    //   setMarketList((prev) => [...prev, { name: listItem, price: "" }]);
+    // }
+
+    if (!marketList.some((item) => item.name.includes(listItem))) {
+      setMarketList((prev) => [...prev, { name: listItem, price: "" }]);
+      setError(false);
+    }
+
+    if (marketList.some((item) => item.name === listItem)) {
+      setError(true);
+    }
 
     setListItem("");
   };
+
+  // const submitHandler = (e) => {
+  //   e.preventDefault();
+
+  //   setMarketList((prev) => [...prev, { name: listItem, price: "" }]);
+
+  // };
 
   const clearList = () => {
     localStorage.removeItem("marketList");
     setMarketList([]);
     setTargetInput("");
+    setError(false);
+    setListItem("");
   };
 
   const goBackHandler = () => {
@@ -79,10 +106,6 @@ const Main = () => {
     setEditIcon(false);
     setTarget("");
   };
-
-  useEffect(() => {
-    localStorage.setItem("marketList", JSON.stringify(marketList));
-  }, [marketList]);
 
   const yesPredictHandler = () => {
     setPredict(true);
@@ -128,6 +151,9 @@ const Main = () => {
                 <button className={classes.button}>ekle</button>
               </form>
             </div>
+            {error && (
+              <p className={classes.errorText}>Bu ürünü zaten ekledin!</p>
+            )}
             {marketList.length > 1 && (
               <button className={classes.button} onClick={clearList}>
                 tüm listeyi sil
