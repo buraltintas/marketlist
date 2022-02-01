@@ -285,4 +285,8 @@
   .itemName {
     max-width: 15rem;
   }
+
+  .enteredPrice {
+    width: 4rem;
+  }
 }
