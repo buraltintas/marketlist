@@ -72,7 +72,7 @@ const Main = () => {
     //   setMarketList((prev) => [...prev, { name: listItem, price: "" }]);
     // }
 
-    if (!marketList.some((item) => item.name.includes(listItem))) {
+    if (!marketList.some((item) => item.name === listItem)) {
       setMarketList((prev) => [...prev, { name: listItem, price: "" }]);
       setError(false);
     }
@@ -211,9 +211,6 @@ const Main = () => {
                   onChange={targetInputHandler}
                   className={classes.targetInput}
                   placeholder="ör: 500"
-                  thousandSeparator={true}
-                  thousandsGroupStyle="try"
-                  prefix={"₺"}
                   value={targetInput}
                   required
                 />
@@ -304,9 +301,6 @@ const Main = () => {
                       onChange={targetInputHandler}
                       className={classes.targetInput}
                       placeholder="ör: 500"
-                      thousandSeparator={true}
-                      thousandsGroupStyle="try"
-                      prefix={"₺"}
                       value={(+targetInput).toLocaleString("tr-TR")}
                       required
                     />
@@ -400,9 +394,7 @@ const Main = () => {
                                   "tr-TR"
                                 )}`}</p>
                               ) : (
-                                <p className={classes.noPrice}>
-                                  Fiyat girilmemiş
-                                </p>
+                                <p className={classes.noPrice}>Fiyat gir!</p>
                               )}
                             </div>
                           )}
@@ -427,9 +419,13 @@ const Main = () => {
                       value={listItem}
                       required
                     />
+
                     <button className={classes.button}>ekle</button>
                   </form>
                 </div>
+              )}
+              {error && (
+                <p className={classes.errorText2}>Bu ürünü zaten ekledin!</p>
               )}
             </div>
             {showTarget && priceList && (

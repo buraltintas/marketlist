@@ -36,6 +36,7 @@
   align-items: center;
   justify-content: center;
   gap: 1.3rem;
+  font-size: 16px;
 }
 
 .productNameInput label {
@@ -46,7 +47,7 @@
 .listInput {
   padding: 0.5rem 0.5rem;
   font-family: "Quicksand", sans-serif;
-  font-size: 1.8rem;
+  font-size: 16px;
   border: 0.2rem dashed black;
   border-radius: 1rem;
 }
@@ -56,6 +57,12 @@
   color: red;
   font-weight: 600;
   margin-top: -1rem;
+}
+.errorText2 {
+  font-size: 2rem;
+  color: red;
+  font-weight: 600;
+  text-align: center;
 }
 
 .productNameInput input:active,
@@ -111,7 +118,7 @@
 .targetInput {
   padding: 0.5rem 0.5rem;
   font-family: "Quicksand", sans-serif;
-  font-size: 1.8rem;
+  font-size: 16px;
   border: 0.2rem dashed black;
   border-radius: 1rem;
   width: 6rem;
@@ -263,6 +270,10 @@
 
   .listContainer {
     margin: 0 auto;
-    max-width: 70% !important;
+    max-width: 100% !important;
+  }
+
+  .shopList {
+    max-width: 100%;
   }
 }
