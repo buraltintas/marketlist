@@ -160,14 +160,14 @@
 .container {
   margin: 0 auto;
   display: flex;
-
+  flex-direction: column;
   width: 100%;
   gap: 6rem;
 }
 
 .listContainer {
   margin: 0 auto;
-  width: 95%;
+  max-width: 100%;
   font-size: 1.8rem;
   display: flex;
   flex-direction: column;
@@ -176,7 +176,7 @@
 
 .shopList {
   margin: 0 auto;
-  max-width: 100%;
+  max-width: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
