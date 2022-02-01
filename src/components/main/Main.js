@@ -3,7 +3,7 @@ import classes from "./Main.module.css";
 import NumberFormat from "react-number-format";
 import editIconImg from "./pencil.svg";
 import deleteIcon from "./trash.png";
-import Footer from "../footer/Footer";
+import checkIcon from "./check.png";
 
 const Main = () => {
   const [listItem, setListItem] = useState("");
@@ -366,12 +366,20 @@ const Main = () => {
                               />
                             </div>
                           )}
+                          {item.price > 0 && (
+                            <img
+                              src={checkIcon}
+                              alt="check icon"
+                              className={classes.checkIcon}
+                            />
+                          )}
 
                           {showTarget && priceList && (
                             <div className={classes.productNameInput}>
                               {item.price === 0 && (
                                 <p className={classes.noPrice}>Fiyat gir!</p>
                               )}
+
                               {item.price > 0 ? (
                                 <p
                                   className={classes.enteredPrice}
@@ -381,16 +389,17 @@ const Main = () => {
                               ) : (
                                 <p className={classes.noPrice}>Fiyat gir!</p>
                               )}
+
                               <input
                                 type="number"
                                 className={classes.targetInput}
                                 placeholder="ör: 50"
                                 required
-                                min="1"
+                                min="0"
                                 onChange={(e) => {
                                   const copyMarketList = [...marketList];
                                   copyMarketList.map((el, ind) => {
-                                    if (index === ind && e.target.value > 0) {
+                                    if (index === ind && e.target.value > -1) {
                                       el.price = e.target.value;
                                     }
                                   });

@@ -257,6 +257,10 @@
   width: 10rem;
 }
 
+.checkIcon {
+  width: 3rem;
+}
+
 @media (max-width: 54em) {
   .container {
     margin: 0 auto;
