@@ -366,7 +366,7 @@ const Main = () => {
                               />
                             </div>
                           )}
-                          {item.price > 0 && (
+                          {item.price > 0 && showTarget && priceList && (
                             <img
                               src={checkIcon}
                               alt="check icon"
