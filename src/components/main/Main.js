@@ -191,7 +191,7 @@ const Main = () => {
                 )}
                 {!predict && (
                   <h1 className={classes.heading}>
-                    Alışveriş listesi tamam mı?
+                    Alışveriş listesi tamamsa devam edebilirsin
                   </h1>
                 )}
               </div>
@@ -262,7 +262,7 @@ const Main = () => {
           </div>
         )}
 
-        {marketList && (
+        {marketList.length > 0 && (
           <div className={classes.listContainer}>
             {showTarget && priceList && (
               <h1 className={classes.heading}>
