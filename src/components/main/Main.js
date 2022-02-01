@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import classes from "./Main.module.css";
 import NumberFormat from "react-number-format";
 import editIconImg from "./pencil.svg";
@@ -45,6 +45,7 @@ const Main = () => {
     setPriceList(true);
     setShowTarget(true);
     setEditIcon(false);
+    setError(false);
   };
 
   const submitWithoutPredict = () => {
@@ -52,6 +53,7 @@ const Main = () => {
     setShowTarget(true);
     setEditIcon(false);
     setTarget("");
+    setError(false);
   };
 
   const deleteItem = (e) => {
@@ -65,12 +67,6 @@ const Main = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-
-    console.log(!marketList.some((item) => item.name.includes(listItem)));
-
-    // if (marketList.length === 0) {
-    //   setMarketList((prev) => [...prev, { name: listItem, price: "" }]);
-    // }
 
     if (!marketList.some((item) => item.name === listItem)) {
       setMarketList((prev) => [...prev, { name: listItem, price: "" }]);
@@ -102,7 +98,7 @@ const Main = () => {
   const goBackHandler = () => {
     setPriceList(false);
     setShowTarget(false);
-
+    setError(false);
     setEditIcon(false);
     setTarget("");
   };
@@ -211,7 +207,7 @@ const Main = () => {
                   onChange={targetInputHandler}
                   className={classes.targetInput}
                   placeholder="ör: 500"
-                  value={targetInput}
+                  value={(+targetInput).toLocaleString("tr-TR")}
                   required
                 />
                 <button className={classes.button}>
@@ -298,6 +294,7 @@ const Main = () => {
                   >
                     <label htmlFor="target">₺</label>
                     <input
+                      type="number"
                       onChange={targetInputHandler}
                       className={classes.targetInput}
                       placeholder="ör: 500"
@@ -372,22 +369,10 @@ const Main = () => {
 
                           {showTarget && priceList && (
                             <div className={classes.productNameInput}>
-                              <input
-                                type="number"
-                                className={classes.targetInput}
-                                placeholder="ör: 50"
-                                required
-                                onBlur={(e) => {
-                                  const copyMarketList = [...marketList];
-                                  copyMarketList.map((el, ind) => {
-                                    if (index === ind) {
-                                      el.price = e.target.value;
-                                    }
-                                  });
-                                  setMarketList(copyMarketList);
-                                }}
-                              />
-                              {item.price !== "" ? (
+                              {item.price === 0 && (
+                                <p className={classes.noPrice}>Fiyat gir!</p>
+                              )}
+                              {item.price > 0 ? (
                                 <p
                                   className={classes.enteredPrice}
                                 >{`₺${(+item.price).toLocaleString(
@@ -396,6 +381,22 @@ const Main = () => {
                               ) : (
                                 <p className={classes.noPrice}>Fiyat gir!</p>
                               )}
+                              <input
+                                type="number"
+                                className={classes.targetInput}
+                                placeholder="ör: 50"
+                                required
+                                min="1"
+                                onChange={(e) => {
+                                  const copyMarketList = [...marketList];
+                                  copyMarketList.map((el, ind) => {
+                                    if (index === ind && e.target.value > 0) {
+                                      el.price = e.target.value;
+                                    }
+                                  });
+                                  setMarketList(copyMarketList);
+                                }}
+                              />
                             </div>
                           )}
                         </div>
@@ -424,7 +425,7 @@ const Main = () => {
                   </form>
                 </div>
               )}
-              {error && (
+              {showTarget && priceList && error && (
                 <p className={classes.errorText2}>Bu ürünü zaten ekledin!</p>
               )}
             </div>
