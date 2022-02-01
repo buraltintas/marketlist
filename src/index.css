@@ -1,12 +1,6 @@
 html {
   font-size: 62.5%;
   box-sizing: border-box;
-  background: rgb(255, 255, 255);
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 244, 234, 1) 100%
-  );
 }
 
 body {
