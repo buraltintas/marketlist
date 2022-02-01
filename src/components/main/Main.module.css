@@ -281,4 +281,8 @@
   .shopList {
     max-width: 80%;
   }
+
+  .itemName {
+    max-width: 15rem;
+  }
 }
