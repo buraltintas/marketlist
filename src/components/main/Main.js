@@ -1,24 +1,24 @@
-import { useEffect, useRef, useState } from "react";
-import classes from "./Main.module.css";
-import NumberFormat from "react-number-format";
-import editIconImg from "./pencil.svg";
-import deleteIcon from "./trash.png";
-import checkIcon from "./check.png";
+import { useEffect, useRef, useState } from 'react';
+import classes from './Main.module.css';
+import NumberFormat from 'react-number-format';
+import editIconImg from './pencil.svg';
+import deleteIcon from './trash.png';
+import checkIcon from './check.png';
 
 const Main = () => {
-  const [listItem, setListItem] = useState("");
-  const [targetInput, setTargetInput] = useState("");
-  const [target, setTarget] = useState("");
+  const [listItem, setListItem] = useState('');
+  const [targetInput, setTargetInput] = useState('');
+  const [target, setTarget] = useState('');
   const [showTarget, setShowTarget] = useState(false);
   const [priceList, setPriceList] = useState(false);
   const [editIcon, setEditIcon] = useState(false);
-  const [predict, setPredict] = useState("");
+  const [predict, setPredict] = useState('');
   const [marketList, setMarketList] = useState([]);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem("marketList")) {
-      setMarketList(JSON.parse(localStorage.getItem("marketList")));
+    if (localStorage.getItem('marketList')) {
+      setMarketList(JSON.parse(localStorage.getItem('marketList')));
     }
   }, []);
 
@@ -52,7 +52,7 @@ const Main = () => {
     setPriceList(true);
     setShowTarget(true);
     setEditIcon(false);
-    setTarget("");
+    setTarget('');
     setError(false);
   };
 
@@ -62,14 +62,14 @@ const Main = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem("marketList", JSON.stringify(marketList));
+    localStorage.setItem('marketList', JSON.stringify(marketList));
   }, [marketList]);
 
   const submitHandler = (e) => {
     e.preventDefault();
 
     if (!marketList.some((item) => item.name === listItem)) {
-      setMarketList((prev) => [...prev, { name: listItem, price: "" }]);
+      setMarketList((prev) => [...prev, { name: listItem, price: '' }]);
       setError(false);
     }
 
@@ -77,7 +77,7 @@ const Main = () => {
       setError(true);
     }
 
-    setListItem("");
+    setListItem('');
   };
 
   // const submitHandler = (e) => {
@@ -88,11 +88,11 @@ const Main = () => {
   // };
 
   const clearList = () => {
-    localStorage.removeItem("marketList");
+    localStorage.removeItem('marketList');
     setMarketList([]);
-    setTargetInput("");
+    setTargetInput('');
     setError(false);
-    setListItem("");
+    setListItem('');
   };
 
   const goBackHandler = () => {
@@ -100,7 +100,7 @@ const Main = () => {
     setShowTarget(false);
     setError(false);
     setEditIcon(false);
-    setTarget("");
+    setTarget('');
   };
 
   const yesPredictHandler = () => {
@@ -112,15 +112,15 @@ const Main = () => {
   };
 
   const finishHandler = () => {
-    localStorage.removeItem("marketList");
+    localStorage.removeItem('marketList');
     setMarketList([]);
-    setTargetInput("");
+    setTargetInput('');
     setPredict(false);
     setPriceList(false);
     setShowTarget(false);
     setEditIcon(false);
     setError(false);
-    setListItem("");
+    setListItem('');
   };
 
   return (
@@ -136,12 +136,12 @@ const Main = () => {
                 onSubmit={submitHandler}
                 className={classes.productNameInput}
               >
-                <label htmlFor="name">ürün adı</label>
+                <label htmlFor='name'>ürün adı</label>
                 <input
                   className={classes.listInput}
-                  type="text"
-                  id="name"
-                  placeholder="ör: çamaşır deterjanı"
+                  type='text'
+                  id='name'
+                  placeholder='ör: çamaşır deterjanı'
                   onChange={listItemHandler}
                   value={listItem}
                   required
@@ -167,19 +167,19 @@ const Main = () => {
                   <div className={classes.predictButtons}>
                     <button
                       className={`${classes.button} ${
-                        predict ? classes.active : ""
+                        predict ? classes.active : ''
                       }`}
                       onClick={yesPredictHandler}
                     >
-                      {predict ? "👍" : "Evet!"}
+                      {predict ? '👍' : 'Evet!'}
                     </button>
                     <button
                       className={`${classes.button} ${
-                        !predict ? classes.active : ""
+                        !predict ? classes.active : ''
                       }`}
                       onClick={noPredictHandler}
                     >
-                      {!predict ? "👎" : "Hayır!"}
+                      {!predict ? '👎' : 'Hayır!'}
                     </button>
                   </div>
                 </div>
@@ -201,32 +201,32 @@ const Main = () => {
                 onSubmit={submitTargetHandler}
                 className={classes.productNameInput}
               >
-                {!showTarget && !priceList && <label htmlFor="target">₺</label>}
+                {!showTarget && !priceList && <label htmlFor='target'>₺</label>}
                 <input
-                  type="number"
+                  type='number'
                   onChange={targetInputHandler}
                   className={classes.targetInput}
-                  placeholder="ör: 500"
-                  value={(+targetInput).toLocaleString("tr-TR")}
+                  placeholder='ör: 500'
+                  value={(+targetInput).toLocaleString('tr-TR')}
                   required
                 />
                 <button className={classes.button}>
                   <div className={classes.targetIcon}>
                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="192"
-                      height="192"
-                      fill="#804916"
-                      viewBox="0 0 256 256"
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='192'
+                      height='192'
+                      fill='#804916'
+                      viewBox='0 0 256 256'
                     >
-                      <rect width="256" height="256" fill="none"></rect>
+                      <rect width='256' height='256' fill='none'></rect>
                       <polyline
-                        points="216 72 104 184 48 128"
-                        fill="none"
-                        stroke="#804916"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="16"
+                        points='216 72 104 184 48 128'
+                        fill='none'
+                        stroke='#804916'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        strokeWidth='16'
                       ></polyline>
                     </svg>
                   </div>
@@ -240,20 +240,20 @@ const Main = () => {
               >
                 <div className={classes.targetIcon}>
                   <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="192"
-                    height="192"
-                    fill="#804916"
-                    viewBox="0 0 256 256"
+                    xmlns='http://www.w3.org/2000/svg'
+                    width='192'
+                    height='192'
+                    fill='#804916'
+                    viewBox='0 0 256 256'
                   >
-                    <rect width="256" height="256" fill="none"></rect>
+                    <rect width='256' height='256' fill='none'></rect>
                     <polyline
-                      points="216 72 104 184 48 128"
-                      fill="none"
-                      stroke="#804916"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="16"
+                      points='216 72 104 184 48 128'
+                      fill='none'
+                      stroke='#804916'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth='16'
                     ></polyline>
                   </svg>
                 </div>
@@ -274,7 +274,7 @@ const Main = () => {
                 <h1 className={classes.heading}>
                   Belirlediğin tahmini toplam tutar:
                 </h1>
-                <p>₺{(+target).toLocaleString("tr-TR")}</p>
+                <p>₺{(+target).toLocaleString('tr-TR')}</p>
                 {!editIcon && (
                   <div
                     className={classes.deleteIcon}
@@ -282,7 +282,7 @@ const Main = () => {
                   >
                     <img
                       src={editIconImg}
-                      alt="edit icon"
+                      alt='edit icon'
                       className={classes.deleteIcon}
                     />
                   </div>
@@ -292,32 +292,32 @@ const Main = () => {
                     onSubmit={submitTargetHandler}
                     className={classes.productNameInput}
                   >
-                    <label htmlFor="target">₺</label>
+                    <label htmlFor='target'>₺</label>
                     <input
-                      type="number"
+                      type='number'
                       onChange={targetInputHandler}
                       className={classes.targetInput}
-                      placeholder="ör: 500"
-                      value={(+targetInput).toLocaleString("tr-TR")}
+                      placeholder='ör: 500'
+                      value={(+targetInput).toLocaleString('tr-TR')}
                       required
                     />
                     <button className={classes.button}>
                       <div className={classes.targetIcon}>
                         <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="192"
-                          height="192"
-                          fill="#804916"
-                          viewBox="0 0 256 256"
+                          xmlns='http://www.w3.org/2000/svg'
+                          width='192'
+                          height='192'
+                          fill='#804916'
+                          viewBox='0 0 256 256'
                         >
-                          <rect width="256" height="256" fill="none"></rect>
+                          <rect width='256' height='256' fill='none'></rect>
                           <polyline
-                            points="216 72 104 184 48 128"
-                            fill="none"
-                            stroke="#804916"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="16"
+                            points='216 72 104 184 48 128'
+                            fill='none'
+                            stroke='#804916'
+                            strokeLinecap='round'
+                            strokeLinejoin='round'
+                            strokeWidth='16'
                           ></polyline>
                         </svg>
                       </div>
@@ -334,7 +334,7 @@ const Main = () => {
               {marketList &&
                 marketList.map((item, index) => {
                   return (
-                    <div key={index}>
+                    <div key={item.name}>
                       <div className={classes.shopList}>
                         <p className={classes.itemNumber}>{index + 1}-</p>
                         <div className={classes.itemNameDiv}>
@@ -348,7 +348,7 @@ const Main = () => {
                           >
                             <img
                               src={deleteIcon}
-                              alt="delete icon"
+                              alt='delete icon'
                               className={classes.deleteIcon}
                             />
                           </div>
@@ -361,7 +361,7 @@ const Main = () => {
                             >
                               <img
                                 src={deleteIcon}
-                                alt="delete icon"
+                                alt='delete icon'
                                 className={classes.deleteIcon}
                               />
                             </div>
@@ -369,7 +369,7 @@ const Main = () => {
                           {item.price > 0 && showTarget && priceList && (
                             <img
                               src={checkIcon}
-                              alt="check icon"
+                              alt='check icon'
                               className={classes.checkIcon}
                             />
                           )}
@@ -384,18 +384,18 @@ const Main = () => {
                                 <p
                                   className={classes.enteredPrice}
                                 >{`₺${(+item.price).toLocaleString(
-                                  "tr-TR"
+                                  'tr-TR'
                                 )}`}</p>
                               ) : (
                                 <p className={classes.noPrice}>Fiyat gir!</p>
                               )}
 
                               <input
-                                type="number"
+                                type='number'
                                 className={classes.targetInput}
-                                placeholder="ör: 50"
+                                placeholder='ör: 50'
                                 required
-                                min="0"
+                                min='0'
                                 onChange={(e) => {
                                   const copyMarketList = [...marketList];
                                   copyMarketList.map((el, ind) => {
@@ -419,12 +419,12 @@ const Main = () => {
                     onSubmit={submitHandler}
                     className={classes.productNameInput}
                   >
-                    <label htmlFor="name">ürün adı</label>
+                    <label htmlFor='name'>ürün adı</label>
                     <input
                       className={classes.listInput}
-                      type="text"
-                      id="name"
-                      placeholder="ör: çamaşır deterjanı"
+                      type='text'
+                      id='name'
+                      placeholder='ör: çamaşır deterjanı'
                       onChange={listItemHandler}
                       value={listItem}
                       required
@@ -440,13 +440,13 @@ const Main = () => {
             </div>
             {showTarget && priceList && (
               <h1 className={classes.heading}>
-                Toplam tutar: ₺{sum.toLocaleString("tr-TR")}
+                Toplam tutar: ₺{sum.toLocaleString('tr-TR')}
                 <br />
                 {target && (
                   <h1 className={classes.heading}>
                     Tahmininden ₺
-                    {Math.abs(sum - +target).toLocaleString("tr-TR")} daha{" "}
-                    {sum > +target ? "fazla" : "az"} harcadın!
+                    {Math.abs(sum - +target).toLocaleString('tr-TR')} daha{' '}
+                    {sum > +target ? 'fazla' : 'az'} harcadın!
                   </h1>
                 )}
                 <div className={classes.btnContainer}>
